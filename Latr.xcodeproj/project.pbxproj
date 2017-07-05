@@ -95,7 +95,7 @@
 		EDC906231F0AA090007B078C = {
 			isa = PBXGroup;
 			children = (
-				EDC9062E1F0AA090007B078C /* SnapClone */,
+				EDC9062E1F0AA090007B078C /* Latr */,
 				EDC9062D1F0AA090007B078C /* Products */,
 				74F144A533BB254091630883 /* Pods */,
 				C09E7854B955415F7A53ADBF /* Frameworks */,
@@ -110,7 +110,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		EDC9062E1F0AA090007B078C /* SnapClone */ = {
+		EDC9062E1F0AA090007B078C /* Latr */ = {
 			isa = PBXGroup;
 			children = (
 				EDC906331F0AA090007B078C /* Main.storyboard */,
@@ -122,6 +122,7 @@
 				EDC9063B1F0AA090007B078C /* Info.plist */,
 				EDC906411F0AD99B007B078C /* GoogleService-Info.plist */,
 			);
+			name = Latr;
 			path = SnapClone;
 			sourceTree = "<group>";
 		};
