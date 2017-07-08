@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		665D14ABC227EA7411D08552 /* Pods_Latr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C107B3A60E9B244E02E86E87 /* Pods_Latr.framework */; };
-		CC6D0AE6C32B929DAFF977F9 /* Pods_SnapClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06398A643EA6E9AD0D232691 /* Pods_SnapClone.framework */; };
 		ED349F9E1F0BCE1900FC1477 /* SelectUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED349F9D1F0BCE1900FC1477 /* SelectUserViewController.swift */; };
 		ED349FA01F0BE35000FC1477 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED349F9F1F0BE35000FC1477 /* User.swift */; };
 		ED349FA41F0BFFB300FC1477 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED349FA31F0BFFB300FC1477 /* Message.swift */; };
@@ -25,7 +24,6 @@
 
 /* Begin PBXFileReference section */
 		0055DD685E2137098640CCDA /* Pods-SnapClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapClone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SnapClone/Pods-SnapClone.debug.xcconfig"; sourceTree = "<group>"; };
-		06398A643EA6E9AD0D232691 /* Pods_SnapClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnapClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A0F4A88DB1F406FDC253753 /* Pods-SnapClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapClone.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapClone/Pods-SnapClone.release.xcconfig"; sourceTree = "<group>"; };
 		A1B73CFFB0A5246949397872 /* Pods-Latr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Latr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Latr/Pods-Latr.release.xcconfig"; sourceTree = "<group>"; };
 		C0B251155A272EF8D3686CB3 /* Pods-Latr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Latr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Latr/Pods-Latr.debug.xcconfig"; sourceTree = "<group>"; };
@@ -51,7 +49,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC6D0AE6C32B929DAFF977F9 /* Pods_SnapClone.framework in Frameworks */,
 				665D14ABC227EA7411D08552 /* Pods_Latr.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,7 +70,6 @@
 		C09E7854B955415F7A53ADBF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				06398A643EA6E9AD0D232691 /* Pods_SnapClone.framework */,
 				C107B3A60E9B244E02E86E87 /* Pods_Latr.framework */,
 			);
 			name = Frameworks;
@@ -393,6 +389,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = GBSL72H2K7;
 				INFOPLIST_FILE = SnapClone/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jackhowa.Latr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -408,6 +405,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = GBSL72H2K7;
 				INFOPLIST_FILE = SnapClone/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jackhowa.Latr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
