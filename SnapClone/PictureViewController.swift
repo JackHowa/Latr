@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
 
 // need specific firebase storage
 // via https://stackoverflow.com/questions/38561257/swift-use-of-unresolved-identifier-firstorage
@@ -25,8 +27,12 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     @IBOutlet weak var datePickerText: UITextField!
     
-    let datePicker = UIDatePicker()
+    // new for adding the email address
+    @IBOutlet weak var toTextField: UITextField!
     
+    
+    
+    let datePicker = UIDatePicker()
     
     var getAtTime = ""
     
@@ -51,6 +57,9 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBAction func tappedGestureAnywhere(_ sender: Any) {
         descriptionTextField.resignFirstResponder()
         datePickerText.resignFirstResponder()
+        
+        // update so that to responds as well to tap outside
+        toTextField.resignFirstResponder()
     }
     
     func createDatePicker() {
@@ -148,6 +157,8 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         
     }
     
+    
+    // now tapped send
     @IBAction func tappedNext(_ sender: Any) {
         nextButton.isEnabled = false
         
@@ -168,7 +179,35 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
             } else {
                 // perform segue upon no error next tap upload
                 // absolute designates the value as a string
-                self.performSegue(withIdentifier: "selectUserSegue", sender: metadata?.downloadURL()?.absoluteString)
+                
+                // loading the message for upload into db
+                let message = ["from": Auth.auth().currentUser!.email!, "description": self.descriptionTextField.text!, "image_url": metadata?.downloadURL()?.absoluteString, "uuid": self.uuid, "getAt": self.getAtTime]
+                
+                
+                
+                // ok need to find the user based on the email
+                let userEmail = self.toTextField.text!
+                
+                // need to verify that this email is indeed an email 
+                // then need to find that uid by the email 
+                
+                
+                // lol this would make the db have users/email then their messages info rather than by the uid 
+                // that could cause problems elsewhere
+                Database.database().reference().child("users").child(userEmail).child("messages").childByAutoId().setValue(message)
+                
+                
+                // child by auto id is a firebase function that prevents reuse of id and makes unique
+                // add the message to the set value
+                Database.database().reference().child("users").child(user.uid).child("messages").childByAutoId().setValue(message)
+                
+                // after selecting a row, go back to the root to see any remaining messages
+                // need this pop back after viewing
+                navigationController!.popToRootViewController(animated: true)
+
+                
+                
+//                self.performSegue(withIdentifier: "selectUserSegue", sender: metadata?.downloadURL()?.absoluteString)
             }
         })
         
@@ -177,21 +216,21 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // assign destination as the next controller
-        let nextVC = segue.destination as! SelectUserViewController
-        
-        // using the select user vc's var declaration
-        // gets sender from sender metadata in perform segue
-        nextVC.imageURL = sender as! String
-        
-        // we know that text here exists with a bang !
-        nextVC.descrip = descriptionTextField.text!
-        
-        // perisist the property of uuid of the created photo to next scene 
-        nextVC.uuid = uuid
-        
-        nextVC.getAt = getAtTime
-    }
-    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        // assign destination as the next controller
+//        let nextVC = segue.destination as! SelectUserViewController
+//        
+//        // using the select user vc's var declaration
+//        // gets sender from sender metadata in perform segue
+//        nextVC.imageURL = sender as! String
+//        
+//        // we know that text here exists with a bang !
+//        nextVC.descrip = descriptionTextField.text!
+//        
+//        // perisist the property of uuid of the created photo to next scene 
+//        nextVC.uuid = uuid
+//        
+//        nextVC.getAt = getAtTime
+//    }
+//    
 }
