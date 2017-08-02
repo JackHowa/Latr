@@ -30,7 +30,7 @@ class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         UNUserNotificationCenter.current().add(request) {
             (error) in
             if error != nil {
-                print("Error adding notification: \(error?.localizedDescription)")
+                print("Error adding notification: \(String(describing: error?.localizedDescription))")
             }
         }
     }
@@ -72,6 +72,10 @@ class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
             // need to cast snapshot.value as a NSDictionary.
             let value = snapshot.value as? NSDictionary
+            
+            
+            // may want to comment out notifications for now if that causes probs with date
+            // may want to comment out anyway
 
             // ensuring that everything doesn't break if there's no new messages or maybe one
             if (snapshot.value as? [String: AnyObject]) != nil // unwrap it since its an optional
@@ -133,6 +137,9 @@ class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
             dateFormmater.dateFormat = "MMM  d, yyyy, h:mm a"
 
+            // will have to change the message dateformatter for each message
+            
+            
             for message in self.messages {
                 // can't loop through and call date all of these times
                 let nativeGetAtDate = dateFormmater.date(from: message.getAt)
