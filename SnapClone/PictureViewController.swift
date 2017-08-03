@@ -39,6 +39,8 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     var getAtTime = ""
     
+    var rawTime = ""
+    
     // need to persist this unique photo id across scenes to delete from db
     var uuid = NSUUID().uuidString
     
@@ -95,16 +97,34 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         // format 
         // dateformatter object
-        let dateFormatter = DateFormatter()
+        var dateFormatter = DateFormatter()
         
         // shortened date show
 //        dateFormatter.dateStyle = .short
 //        dateFormatter.timeStyle = .none
         
         
+        print("this is output of datepicker")
+        print(datePicker.date)
+        // 2017-08-03 20:57:21 +0000
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+    
+        
+        
+        
+        rawTime = dateFormatter.string(from: datePicker.date)
+        print("this is output of rawtime")
+        print(rawTime)
+        
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
+        
+        // datePicker date is a certain style
+        
+        
         getAtTime = dateFormatter.string(from: datePicker.date)
+        
+        print(getAtTime)
         
         // assign input text of the returned datePicker var
         datePickerText.text = getAtTime
@@ -194,7 +214,7 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
                 // absolute designates the value as a string
                 
                 // loading the message for upload into db
-                let message = ["from": Auth.auth().currentUser!.email!, "description": self.descriptionTextField.text!, "image_url": metadata?.downloadURL()?.absoluteString, "uuid": self.uuid, "getAt": self.getAtTime]
+                let message = ["from": Auth.auth().currentUser!.email!, "description": self.descriptionTextField.text!, "image_url": metadata?.downloadURL()?.absoluteString, "uuid": self.uuid, "getAt": self.rawTime]
                 
                 
                 
