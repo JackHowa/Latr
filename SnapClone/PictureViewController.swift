@@ -206,9 +206,9 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         // uu id unique
         imagesFolder.child("\(uuid).jpg").putData(imageData, metadata: nil, completion: { (metadata, error) in
-            print("we're trying to upload")
+//            print("we're trying to upload")
             if error != nil {
-                print("We had an error: \(String(describing: error))")
+//                print("We had an error: \(String(describing: error))")
             } else {
                 // perform segue upon no error next tap upload
                 // absolute designates the value as a string
@@ -227,7 +227,7 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
                     for snap in snapshot.children {
                         let userSnap = snap as! DataSnapshot
                         let uid = userSnap.key //the uid of each user
-                        print("key = \(uid)")
+//                        print("key = \(uid)")
                         
                         Database.database().reference().child("users").child(uid).child("messages").childByAutoId().setValue(message)
                     
@@ -237,7 +237,7 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
                     guard snapshot.value is NSNull else {
                         //yes we got the user
                         let user = snapshot
-                        print("\(user)  exists" )
+//                        print("\(user)  exists" )
                         
                         // after selecting a row, go back to the root to see any remaining messages
                         // need this pop back after viewing
@@ -248,14 +248,14 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
                     
                     
                     //no there is no user with desired email
-                    print("\(userEmail) isn't a user")
+//                    print("\(userEmail) isn't a user")
                     self.displayAlertMessage(userMessage: "User doesn't exist")
                     
                     
                     
                 })
                 { (error) in
-                    print("Failed to get snapshot", error.localizedDescription)
+//                    print("Failed to get snapshot", error.localizedDescription)
 
                 }
                 

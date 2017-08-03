@@ -142,8 +142,7 @@ class RegistrationPageViewController: UIViewController {
             self.databaseRef.child("users").child(uid)
             let values = ["email": email]
             
-            userReference.updateChildValues(values
-                , withCompletionBlock: { (error, ref) in
+            userReference.updateChildValues(values , withCompletionBlock: { (error, ref) in
                     if error != nil{
                         print(error!)
                         return

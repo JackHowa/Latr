@@ -39,14 +39,14 @@ class SignInViewController: UIViewController {
     @IBAction func signInTapped(_ sender: Any) {
         Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion:
             { (user, error) in
-                print("we tried to sign in")
+//                print("we tried to sign in")
                 if error != nil {
-                    print("we tried to create a user")
-                    print("There's an error: \(String(describing: error))")
+//                    print("we tried to create a user")
+//                    print("There's an error: \(String(describing: error))")
                     // inspirational wrong password
                     self.wrongPassword(title: "Login Error", message: "Either wrong email or password.")
                 } else {
-                    print("Signed in successfully")
+//                    print("Signed in successfully")
                     self.performSegue(withIdentifier: "signInSegue", sender: nil)
                 }
         })
@@ -69,7 +69,7 @@ func newUser(title: String, message: String) {
     alert.addAction(UIAlertAction(title: "Thanks", style: UIAlertActionStyle.default, handler: { (action) in
         // what to do when button clicked
         alert.dismiss(animated: true, completion: nil)
-        print("Signed in successfully")
+//        print("Signed in successfully")
         self.performSegue(withIdentifier: "signInSegue", sender: nil)
     }))
     
