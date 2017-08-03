@@ -202,7 +202,23 @@ class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
             // set cell's text label
             cell.textLabel?.text = message.from
-            cell.detailTextLabel!.text = message.getAt
+            
+            
+            // need to reformatt message get at time here 
+            let dateFormater = DateFormatter()
+            dateFormater.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+            let nativeGetAtDate = dateFormater.date(from: message.getAt)
+            dateFormater.dateStyle = .medium
+            dateFormater.timeStyle = .short
+            
+            // datePicker date is a certain style
+        
+            var getAtTime = dateFormater.string(from: nativeGetAtDate!)
+            
+                
+            
+            
+            cell.detailTextLabel!.text = getAtTime
             cell.isUserInteractionEnabled = true
 
 
