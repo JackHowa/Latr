@@ -97,17 +97,24 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         // format 
         // dateformatter object
-        let dateFormatter = DateFormatter()
+        var dateFormatter = DateFormatter()
         
         // shortened date show
 //        dateFormatter.dateStyle = .short
 //        dateFormatter.timeStyle = .none
         
         
-        
+        print("this is output of datepicker")
         print(datePicker.date)
+        // 2017-08-03 20:57:21 +0000
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+    
         
-        rawTime = datePicker.date
+        
+        
+        rawTime = dateFormatter.string(from: datePicker.date)
+        print("this is output of rawtime")
+        print(rawTime)
         
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
