@@ -134,8 +134,9 @@ class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
             // 2017-07-09T19:55:41+0000
             // Jul 9 , 2017, 7:55 PM
+            dateFormmater.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
 
-            dateFormmater.dateFormat = "MMM  d, yyyy, h:mm a"
+//            dateFormmater.dateFormat = "MMM  d, yyyy, h:mm a"
 
             // will have to change the message dateformatter for each message
             

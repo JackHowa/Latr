@@ -34,9 +34,10 @@ class ViewSnapViewController: UIViewController {
         let dateFormmater = DateFormatter()
         // 2017-07-09T19:55:41+0000
         // Jul 9 , 2017, 7:55 PM
+        dateFormmater.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+//        dateFormmater.dateFormat = "MMM  d, yyyy, h:mm a"
         
-        dateFormmater.dateFormat = "MMM  d, yyyy, h:mm a"
-        
+        // going back to date
         let nativeGetAtDate = dateFormmater.date(from: message.getAt)
 
         // else
@@ -111,8 +112,8 @@ class ViewSnapViewController: UIViewController {
         
         // 2017-07-09T19:55:41+0000
         // Jul 9 , 2017, 7:55 PM
-        
-        dateFormmater.dateFormat = "MMM  d, yyyy, h:mm a"
+        dateFormmater.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+//        dateFormmater.dateFormat = "MMM  d, yyyy, h:mm a"
 
         let nativeGetAtDate = dateFormmater.date(from: message.getAt)
         
