@@ -26,15 +26,29 @@ class ViewSnapViewController: UIViewController {
         
 //         ns current time
         let date = Date()
-
+        
+        // need to check the incoming date 
+        // message.getAt
+        // if message.getAt contains an M as the last in the string
+        
         let dateFormmater = DateFormatter()
         // 2017-07-09T19:55:41+0000
         // Jul 9 , 2017, 7:55 PM
+        dateFormmater.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+//        dateFormmater.dateFormat = "MMM  d, yyyy, h:mm a"
         
-        dateFormmater.dateFormat = "MMM  d, yyyy, h:mm a"
-
+        // going back to date
         let nativeGetAtDate = dateFormmater.date(from: message.getAt)
-  
+
+        // else
+            // alt date formatt: 19 Jul 2017, 07:30
+
+        // end
+        
+        
+        
+        
+        
         if date > nativeGetAtDate! {
             captionTextField.text = message.descrip
             imageView.sd_setImage(with: URL(string: message.imageURL))
@@ -87,17 +101,26 @@ class ViewSnapViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         // interpolate the message's uuid url of the photo here to delete that too
         
+        
+        
+        // fix date here as well
+        // **** 
+        
         // ns current time
         let date = Date()
         let dateFormmater = DateFormatter()
         
         // 2017-07-09T19:55:41+0000
         // Jul 9 , 2017, 7:55 PM
-        
-        dateFormmater.dateFormat = "MMM  d, yyyy, h:mm a"
+        dateFormmater.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+//        dateFormmater.dateFormat = "MMM  d, yyyy, h:mm a"
 
         let nativeGetAtDate = dateFormmater.date(from: message.getAt)
- 
+        
+        
+        // have to fix date here as well
+        
+        
         if date >= nativeGetAtDate! {
             Database.database().reference().child("users").child(Auth.auth().currentUser!.uid).child("messages").child(message.key).removeValue()
             Storage.storage().reference().child("images").child("\(message.uuid).jpg").delete { (error) in

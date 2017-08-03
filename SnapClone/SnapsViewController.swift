@@ -30,7 +30,8 @@ class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         UNUserNotificationCenter.current().add(request) {
             (error) in
             if error != nil {
-//                print("Error adding notification: \(error?.localizedDescription)")
+//                print("Error adding notification: \(String(describing: error?.localizedDescription))")
+
             }
         }
     }
@@ -72,6 +73,10 @@ class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
             // need to cast snapshot.value as a NSDictionary.
             let value = snapshot.value as? NSDictionary
+            
+            
+            // may want to comment out notifications for now if that causes probs with date
+            // may want to comment out anyway
 
             // ensuring that everything doesn't break if there's no new messages or maybe one
             if (snapshot.value as? [String: AnyObject]) != nil // unwrap it since its an optional
@@ -130,9 +135,13 @@ class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
             // 2017-07-09T19:55:41+0000
             // Jul 9 , 2017, 7:55 PM
+            dateFormmater.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
 
-            dateFormmater.dateFormat = "MMM  d, yyyy, h:mm a"
+//            dateFormmater.dateFormat = "MMM  d, yyyy, h:mm a"
 
+            // will have to change the message dateformatter for each message
+            
+            
             for message in self.messages {
                 // can't loop through and call date all of these times
                 let nativeGetAtDate = dateFormmater.date(from: message.getAt)
@@ -194,7 +203,23 @@ class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
             // set cell's text label
             cell.textLabel?.text = message.from
-            cell.detailTextLabel!.text = message.getAt
+            
+            
+            // need to reformatt message get at time here 
+            let dateFormater = DateFormatter()
+            dateFormater.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+            let nativeGetAtDate = dateFormater.date(from: message.getAt)
+            dateFormater.dateStyle = .medium
+            dateFormater.timeStyle = .short
+            
+            // datePicker date is a certain style
+        
+            var getAtTime = dateFormater.string(from: nativeGetAtDate!)
+            
+                
+            
+            
+            cell.detailTextLabel!.text = getAtTime
             cell.isUserInteractionEnabled = true
 
 
