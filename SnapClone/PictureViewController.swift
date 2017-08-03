@@ -39,6 +39,8 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     var getAtTime = ""
     
+    var rawTime = ""
+    
     // need to persist this unique photo id across scenes to delete from db
     var uuid = NSUUID().uuidString
     
@@ -102,9 +104,20 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
 //        dateFormatter.timeStyle = .none
         
         
+        
+        print(datePicker.date)
+        
+        rawTime = datePicker.date
+        
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
+        
+        // datePicker date is a certain style
+        
+        
         getAtTime = dateFormatter.string(from: datePicker.date)
+        
+        print(getAtTime)
         
         // assign input text of the returned datePicker var
         datePickerText.text = getAtTime
@@ -194,7 +207,7 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
                 // absolute designates the value as a string
                 
                 // loading the message for upload into db
-                let message = ["from": Auth.auth().currentUser!.email!, "description": self.descriptionTextField.text!, "image_url": metadata?.downloadURL()?.absoluteString, "uuid": self.uuid, "getAt": self.getAtTime]
+                let message = ["from": Auth.auth().currentUser!.email!, "description": self.descriptionTextField.text!, "image_url": metadata?.downloadURL()?.absoluteString, "uuid": self.uuid, "getAt": self.rawTime]
                 
                 
                 
