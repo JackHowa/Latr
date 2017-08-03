@@ -101,7 +101,7 @@ class ViewSnapViewController: UIViewController {
         if date >= nativeGetAtDate! {
             Database.database().reference().child("users").child(Auth.auth().currentUser!.uid).child("messages").child(message.key).removeValue()
             Storage.storage().reference().child("images").child("\(message.uuid).jpg").delete { (error) in
-                print("we deleted the picture")
+//                print("we deleted the picture")
             }
         }
         

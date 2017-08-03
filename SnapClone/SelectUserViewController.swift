@@ -50,7 +50,7 @@ class SelectUserViewController: UIViewController, UITableViewDataSource, UITable
         Database.database().reference().child("users").observe(DataEventType.childAdded, with: {(snapshot) in
             // returns object of each user 
             // called for each user
-            print(snapshot)
+//            print(snapshot)
             
             // like calling new
             let user = User()

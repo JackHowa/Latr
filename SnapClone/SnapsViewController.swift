@@ -30,7 +30,7 @@ class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         UNUserNotificationCenter.current().add(request) {
             (error) in
             if error != nil {
-                print("Error adding notification: \(error?.localizedDescription)")
+//                print("Error adding notification: \(error?.localizedDescription)")
             }
         }
     }
@@ -62,7 +62,7 @@ class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         Database.database().reference().child("users").child(Auth.auth().currentUser!.uid).child("messages").observe(DataEventType.childAdded, with: {(snapshot) in
             // returns object of each message
             // called for each message
-            print(snapshot)
+//            print(snapshot)
 
             // like calling new
             let message = Message()
