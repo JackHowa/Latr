@@ -9,32 +9,33 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
-import UserNotifications
+//import UserNotifications
 
 @available(iOS 10.0, *)
-class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UNUserNotificationCenterDelegate {
+// UNUserNotificationCenterDelegate
+class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var isGrantedNotificationAccess = false
+//    var isGrantedNotificationAccess = false
 
     
-    func makeContent() -> UNMutableNotificationContent {
-        let content = UNMutableNotificationContent()
-        content.title = "Title"
-        content.body = "Body"
-        content.userInfo = ["step":0]
-        return content
-    }
-    
-    func addNotifications(trigger:UNNotificationTrigger?, content:UNMutableNotificationContent, identifier:String) {
-        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request) {
-            (error) in
-            if error != nil {
-//                print("Error adding notification: \(String(describing: error?.localizedDescription))")
-
-            }
-        }
-    }
+//    func makeContent() -> UNMutableNotificationContent {
+//        let content = UNMutableNotificationContent()
+//        content.title = "Title"
+//        content.body = "Body"
+//        content.userInfo = ["step":0]
+//        return content
+//    }
+//    
+//    func addNotifications(trigger:UNNotificationTrigger?, content:UNMutableNotificationContent, identifier:String) {
+//        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+//        UNUserNotificationCenter.current().add(request) {
+//            (error) in
+//            if error != nil {
+////                print("Error adding notification: \(String(describing: error?.localizedDescription))")
+//
+//            }
+//        }
+//    }
     
 
     @IBOutlet weak var tableView: UITableView!
@@ -44,14 +45,14 @@ class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setToolbarHidden(true, animated: true)
-        UNUserNotificationCenter.current().delegate = self
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.badge,.sound]) {
-            (granted,error) in
-            self.isGrantedNotificationAccess = granted
-            if !granted {
-                //add alert to complain to user
-            }
-        }
+//        UNUserNotificationCenter.current().delegate = self
+//        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.badge,.sound]) {
+//            (granted,error) in
+//            self.isGrantedNotificationAccess = granted
+//            if !granted {
+//                //add alert to complain to user
+//            }
+//        }
         
         // find current user's messages
 
@@ -88,19 +89,19 @@ class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     message.getAt = value?["getAt"] as! String
                     
                     // fire notifications when message is waiting
-                    if self.isGrantedNotificationAccess {
-                        let content = UNMutableNotificationContent()
-                        content.title = "Latr"
-                        content.body = "You have a message almost ready to be opened!!!"
-                        let unitFlags:Set<Calendar.Component> = [.minute,.hour,.second]
-                        var date = Calendar.current.dateComponents(unitFlags, from: Date())
-                        date.second = date.second! + 5
-                        
-                        
-                        
-                        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: (1*60), repeats: false)
-                        self.addNotifications(trigger: trigger, content: content, identifier: "message.scheduled")
-                    }
+//                    if self.isGrantedNotificationAccess {
+//                        let content = UNMutableNotificationContent()
+//                        content.title = "Latr"
+//                        content.body = "You have a message almost ready to be opened!!!"
+//                        let unitFlags:Set<Calendar.Component> = [.minute,.hour,.second]
+//                        var date = Calendar.current.dateComponents(unitFlags, from: Date())
+//                        date.second = date.second! + 5
+//                        
+//                        
+//                        
+//                        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: (1*60), repeats: false)
+//                        self.addNotifications(trigger: trigger, content: content, identifier: "message.scheduled")
+//                    }
 
                     
                 }
@@ -243,10 +244,10 @@ class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     //MARK: - Delegates in-app notifications
     
-    @available(iOS 10.0, *)
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.alert, .sound]) //presentation options as arguments
-    }
+//    @available(iOS 10.0, *)
+//    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+//        completionHandler([.alert, .sound]) //presentation options as arguments
+//    }
     
 
 }
