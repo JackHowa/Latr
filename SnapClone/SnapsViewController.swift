@@ -200,6 +200,8 @@ class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
         } else {
             let message = messages[indexPath.row]
+            
+            //
 
             // set cell's text label
             cell.textLabel?.text = message.from
@@ -216,7 +218,13 @@ class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
             var getAtTime = dateFormater.string(from: nativeGetAtDate!)
             
-                
+                // use a json string 
+                // don't want to be dependent on local setting 
+            // utc time rather than 
+            // data t.son 
+            // cocapods for json 
+            // 
+            
             
             
             cell.detailTextLabel!.text = getAtTime
