@@ -56,6 +56,14 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
 
     }
     
+    // view will or did appear may account for ui changes 
+    //
+    
+    func textFieldDidEndEditing() {
+        if datePickerText.hasText && toTextField.hasText && descriptionTextField.hasText {
+            sendButton.isEnabled = true
+        }
+    }
     
     
     
@@ -128,6 +136,9 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         // assign input text of the returned datePicker var
         datePickerText.text = getAtTime
+        
+        // check whether able to send
+        textFieldDidEndEditing()
 
         // close picker view
         self.view.endEditing(true)
@@ -147,8 +158,12 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         // can now click next button 
         // testing and debugging
         // authorization
-        sendButton.isEnabled = true
         
+        // send button is enabled to early here
+        // sendButton.isEnabled = true
+        
+        // check whether able to send
+        textFieldDidEndEditing()
         
         imagePicker.dismiss(animated: true, completion: nil)
     }
