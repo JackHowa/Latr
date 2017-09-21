@@ -27,8 +27,19 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var signInButton: UIButton!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // add into firebase database
+        
+        // Check whether the user is already logged in 
+        // help via stack https://stackoverflow.com/questions/41531271/checking-firebase-current-signed-in-user-via-listener-in-ios
+        Auth.auth().addStateDidChangeListener { auth, user in
+            if user != nil {
+                // user can proceed to inbox page
+                self.performSegue(withIdentifier: "signInSegue", sender: nil)
+            } else {
+                // Show login screen
+                // Not sure why it's still rendering, but it's better at least showing inbox next
+                super.viewDidLoad()
+            }
+        }
         
         
     }
@@ -39,11 +50,7 @@ class SignInViewController: UIViewController {
     @IBAction func signInTapped(_ sender: Any) {
         Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion:
             { (user, error) in
-//                print("we tried to sign in")
                 if error != nil {
-//                    print("we tried to create a user")
-//                    print("There's an error: \(String(describing: error))")
-                    // inspirational wrong password
                     self.wrongPassword(title: "Login Error", message: "Either wrong email or password.")
                 } else {
 //                    print("Signed in successfully")
