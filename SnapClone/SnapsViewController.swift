@@ -42,7 +42,6 @@ class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     var messages : [Message] = []
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setToolbarHidden(true, animated: true)
@@ -175,9 +174,9 @@ class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // prep for view message scene
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let message = messages[indexPath.row]
-        
+
         self.performSegue(withIdentifier: "viewSnapSegue", sender: message)
-        tableView.deselectRow(at: indexPath, animated: false)
+
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -238,7 +237,7 @@ class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
 
 
-    // logout
+
     @IBAction func tappedLogout(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
