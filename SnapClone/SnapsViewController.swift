@@ -176,6 +176,7 @@ class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let message = messages[indexPath.row]
 
         self.performSegue(withIdentifier: "viewSnapSegue", sender: message)
+        tableView.deselectRow(at: indexPath, animated: false)
 
     }
 
