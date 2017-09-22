@@ -27,22 +27,19 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var signInButton: UIButton!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         
-        // Check whether the user is already logged in 
+        // Check whether the user is already logged in
         // help via stack https://stackoverflow.com/questions/41531271/checking-firebase-current-signed-in-user-via-listener-in-ios
         Auth.auth().addStateDidChangeListener { auth, user in
             if user != nil {
                 // user can proceed to inbox page
-                self.performSegue(withIdentifier: "signInSegue", sender: nil)
-            } else {
-                // Show login screen
-                // Not sure why it's still rendering, but it's better at least showing inbox next
-                super.viewDidLoad()
+                self.signIn()
             }
         }
-        
-        
     }
+    
+    
     
     // we're logging in and registering now
     // this will be easier than handling both on different pages
@@ -53,36 +50,40 @@ class SignInViewController: UIViewController {
                 if error != nil {
                     self.wrongPassword(title: "Login Error", message: "Either wrong email or password.")
                 } else {
-//                    print("Signed in successfully")
+                    //                    print("Signed in successfully")
                     self.performSegue(withIdentifier: "signInSegue", sender: nil)
                 }
         })
-}
-
-func wrongPassword(title: String, message: String) {
-    let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+    }
     
-    alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.cancel, handler: { (action) in
-        // what to do when button clicked
-        alert.dismiss(animated: true, completion: nil)
-    }))
+    func wrongPassword(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.cancel, handler: { (action) in
+            // what to do when button clicked
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
     
-    self.present(alert, animated: true, completion: nil)
-}
-
-func newUser(title: String, message: String) {
-    let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+    func newUser(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "Thanks", style: UIAlertActionStyle.default, handler: { (action) in
+            // what to do when button clicked
+            alert.dismiss(animated: true, completion: nil)
+            //        print("Signed in successfully")
+            self.performSegue(withIdentifier: "signInSegue", sender: nil)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+        
+    }
     
-    alert.addAction(UIAlertAction(title: "Thanks", style: UIAlertActionStyle.default, handler: { (action) in
-        // what to do when button clicked
-        alert.dismiss(animated: true, completion: nil)
-//        print("Signed in successfully")
+    func signIn() {
         self.performSegue(withIdentifier: "signInSegue", sender: nil)
-    }))
-    
-    self.present(alert, animated: true, completion: nil)
-    
-}
+    }
 }
 
 
