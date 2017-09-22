@@ -29,16 +29,20 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         // Check whether the user is already logged in
         // help via stack https://stackoverflow.com/questions/41531271/checking-firebase-current-signed-in-user-via-listener-in-ios
-        Auth.auth().addStateDidChangeListener { auth, user in
-            if user != nil {
-                // user can proceed to inbox page
-                self.signIn()
-            }
-        }
+        // getting nil though :(
+//        Auth.auth().addStateDidChangeListener { auth, user in
+//            if let user = user {
+//                // User is signed in.
+//                self.signIn()
+//            } else {
+//                // No user is signed in.
+//            }
+//        }
     }
-    
     
     
     // we're logging in and registering now
