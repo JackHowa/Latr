@@ -27,7 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var navigationBarAppearace = UINavigationBar.appearance()
         
         navigationBarAppearace.tintColor = uicolorFromHex(rgbValue: 0x0FFFFFF)
-        navigationBarAppearace.barTintColor = uicolorFromHex(rgbValue: 0x04f1f26)
+        
+        // to change hexcode after the 0x0 comes the hex value
+        navigationBarAppearace.barTintColor = uicolorFromHex(rgbValue: 0x0a83f4a)
         navigationBarAppearace.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
 
         
