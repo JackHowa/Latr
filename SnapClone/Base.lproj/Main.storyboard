@@ -80,7 +80,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.23529411759999999" green="0.090196078430000007" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.65759450197219849" green="0.24668565392494202" blue="0.29176509380340576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="oPa-Ff-65w" firstAttribute="trailing" secondItem="N1W-w0-T2V" secondAttribute="trailing" id="5mg-TP-txM"/>
                             <constraint firstItem="N1W-w0-T2V" firstAttribute="top" secondItem="9FB-eh-4yC" secondAttribute="bottom" constant="8" id="I7S-yi-kx3"/>
@@ -174,7 +174,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.23529411759999999" green="0.090196078430000007" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.65759450200000003" green="0.2466856539" blue="0.29176509379999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Nfs-LO-20h" firstAttribute="top" secondItem="IcX-13-g7o" secondAttribute="bottom" constant="8" symbolic="YES" id="1OJ-L2-8YM"/>
                             <constraint firstItem="IcX-13-g7o" firstAttribute="top" secondItem="goI-Gj-Qfs" secondAttribute="bottom" constant="8" id="7ds-TJ-gi8"/>
@@ -349,7 +349,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qDr-Jb-17O">
                                 <rect key="frame" x="91" y="72" width="192" height="101"/>
-                                <color key="backgroundColor" red="0.23529411759999999" green="0.090196078430000007" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.65759450200000003" green="0.2466856539" blue="0.29176509379999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="101" id="gdW-ML-aC9"/>
                                 </constraints>
