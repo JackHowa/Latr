@@ -30,7 +30,7 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
         
         
-        
+       
         // Check whether the user is already logged in
         // help via stack https://stackoverflow.com/questions/41531271/checking-firebase-current-signed-in-user-via-listener-in-ios
         // getting nil though :(
@@ -87,6 +87,10 @@ class SignInViewController: UIViewController {
     
     func signIn() {
         self.performSegue(withIdentifier: "signInSegue", sender: nil)
+    }
+    
+    func isset(_ args: Any?...) -> Bool {
+        return !args.contains { $0 == nil }
     }
 }
 
