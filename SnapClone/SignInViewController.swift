@@ -28,20 +28,17 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-       
-        // Check whether the user is already logged in
         // help via stack https://stackoverflow.com/questions/41531271/checking-firebase-current-signed-in-user-via-listener-in-ios
-        // getting nil though :(
-//        Auth.auth().addStateDidChangeListener { auth, user in
-//            if let user = user {
-//                // User is signed in.
-//                self.signIn()
-//            } else {
-//                // No user is signed in.
-//            }
-//        }
+        
+        // help via understanding php isset() var user not equal to nil
+        Auth.auth().addStateDidChangeListener { auth, user in
+            if (user != nil) {
+                print("User is signed in.")
+                self.signIn()
+            } else {
+                print("No user is signed in..")
+            }
+        }
     }
     
     
@@ -87,10 +84,6 @@ class SignInViewController: UIViewController {
     
     func signIn() {
         self.performSegue(withIdentifier: "signInSegue", sender: nil)
-    }
-    
-    func isset(_ args: Any?...) -> Bool {
-        return !args.contains { $0 == nil }
     }
 }
 
