@@ -9,10 +9,17 @@ We want you to look forward to looking back. With Latr, you can send a message a
  
  
  ## Authors 
+
+**Version 1.0**
  - [Kosha Patel](https://github.com/kpatel7389) 
  - [Braidy Merkle](https://github.com/bmerkle3)
  - [Zach Parsons](https://github.com/ZachParsons)
  - [Jack Howard](https://github.com/jackhowa)
+ 
+ **Ongoing development**
+ - [Jack Howard](https://github.com/jackhowa)
+ - Matt Zuzolo 
+ - Evan Mack 
  
  ## License 
  
