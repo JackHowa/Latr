@@ -33,6 +33,9 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
     // new for adding the email address
     @IBOutlet weak var toTextField: UITextField!
     
+
+
+    
     
     
     let datePicker = UIDatePicker()
@@ -229,12 +232,16 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
                 // absolute designates the value as a string
                 
                 // loading the message for upload into db
-                let message = ["from": Auth.auth().currentUser!.email!, "description": self.descriptionTextField.text!, "image_url": metadata?.downloadURL()?.absoluteString, "uuid": self.uuid, "getAt": self.rawTime]
+           
+                var message = ["from": Auth.auth().currentUser!.email!, "description": self.descriptionTextField.text!, "image_url": metadata?.downloadURL()?.absoluteString, "uuid": self.uuid, "getAt": self.rawTime]
+            
                 
                 
                 
                 // ok need to find the user based on the email
-                let userEmail = self.toTextField.text!
+                //added .lowercased(). Added "!" to .text because reasons
+                let userEmail = self.toTextField.text!.lowercased()
+            
                 
                 let ref = Database.database().reference().child("users").queryOrdered(byChild: "email").queryEqual(toValue: userEmail)
                 ref.observeSingleEvent(of: .value, with: { (snapshot) in
